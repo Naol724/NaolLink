@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Naol Gonfa — Links</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #08091A;
+      --card:     #0F1629;
+      --cyan:     #00D4FF;
+      --purple:   #7C6FFF;
+      --text:     #E8EEFF;
+      --muted:    #7A85AA;
+      --border:   rgba(0,212,255,0.13);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 3rem 1.2rem 4rem;
+      overflow-x: hidden;
+    }
+
+    /* animated grid bg */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 52px 52px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* glow blob */
+    body::after {
+      content: '';
+      position: fixed;
+      top: -10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(0,212,255,0.09) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+
+    /* ── AVATAR ── */
+    .avatar-wrap {
+      position: relative;
+      margin-bottom: 1.2rem;
+    }
+    .avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--cyan) 0%, var(--purple) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: var(--bg);
+      border: 3px solid rgba(0,212,255,0.35);
+      box-shadow: 0 0 32px rgba(0,212,255,0.2);
+    }
+    .status-dot {
+      position: absolute;
+      bottom: 4px; right: 4px;
+      width: 18px; height: 18px;
+      background: #22C55E;
+      border-radius: 50%;
+      border: 3px solid var(--bg);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.5); }
+      50%      { box-shadow: 0 0 0 6px rgba(34,197,94,0); }
+    }
+
+    /* ── NAME & TITLE ── */
+    h1 {
+      font-size: 1.7rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-align: center;
+      margin-bottom: 0.3rem;
+    }
+    h1 span { color: var(--cyan); }
+
+    .title-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      padding: 0.28rem 0.75rem;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      color: var(--cyan);
+      background: rgba(0,212,255,0.06);
+      letter-spacing: 0.04em;
+    }
+    .badge.purple {
+      color: var(--purple);
+      background: rgba(124,111,255,0.07);
+      border-color: rgba(124,111,255,0.2);
+    }
+    .badge.green {
+      color: #22C55E;
+      background: rgba(34,197,94,0.07);
+      border-color: rgba(34,197,94,0.2);
+    }
+
+    /* ── BIO ── */
+    .bio {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+      max-width: 400px;
+      margin-bottom: 1.6rem;
+      padding: 0 0.5rem;
+    }
+    .bio strong { color: var(--text); font-weight: 600; }
+
+    /* ── SKILLS STRIP ── */
+    .skills-strip {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.4rem;
+      margin-bottom: 2rem;
+    }
+    .skill-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      padding: 0.22rem 0.7rem;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--muted);
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1.2rem;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .divider span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+
+    /* ── LINK CARDS ── */
+    .links {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .link-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.3rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: border-color 0.22s, transform 0.22s, box-shadow 0.22s;
+      position: relative;
+      overflow: hidden;
+    }
+    .link-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0,212,255,0.04), transparent);
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+    .link-card:hover {
+      border-color: rgba(0,212,255,0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(0,212,255,0.1);
+    }
+    .link-card:hover::before { opacity: 1; }
+
+    .link-icon {
+      width: 42px; height: 42px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    /* per-platform colors */
+    .ic-tg   { background: rgba(37,211,255,0.12);  }
+    .ic-ig   { background: rgba(225,48,108,0.12);  }
+    .ic-li   { background: rgba(10,102,194,0.12);  }
+    .ic-gh   { background: rgba(255,255,255,0.08); }
+    .ic-web  { background: rgba(0,212,255,0.1);    }
+    .ic-so   { background: rgba(244,128,36,0.12);  }
+    .ic-mail { background: rgba(124,111,255,0.12); }
+
+    .link-text { flex: 1; }
+    .link-label {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+    .link-sub {
+      display: block;
+      font-size: 0.76rem;
+      color: var(--muted);
+      font-weight: 400;
+      margin-top: 0.1rem;
+    }
+
+    .arrow {
+      color: var(--muted);
+      font-size: 1.1rem;
+      transition: color 0.2s, transform 0.2s;
+    }
+    .link-card:hover .arrow { color: var(--cyan); transform: translateX(3px); }
+
+    /* ── QUOTE ── */
+    .quote {
+      margin-top: 2rem;
+      text-align: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.7;
+      padding: 0 1rem;
+    }
+    .quote em {
+      font-style: italic;
+      color: rgba(0,212,255,0.6);
+    }
+
+    /* entrance animation */
+    .link-card {
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.4s ease forwards;
+    }
+    @keyframes fadeUp { to { opacity:1; transform:translateY(0); } }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Avatar -->
+  <div class="avatar-wrap">
+    <div class="avatar">NG</div>
+    <div class="status-dot"></div>
+  </div>
+
+  <!-- Name -->
+  <h1>Naol <span>Gonfa</span></h1>
+
+  <!-- Badges -->
+  <div class="title-row">
+    <span class="badge">Full Stack Developer</span>
+    <span class="badge purple">AI Systems Builder</span>
+    <span class="badge green">Open to Work</span>
+  </div>
+
+  <!-- Bio -->
+  <p class="bio">
+    CS Student from <strong>Ethiopia 🇪🇹</strong> building real-world systems that think.<br><br>
+    I engineer <strong>full-stack web platforms</strong> (MERN, REST APIs) and <strong>AI-powered applications</strong> using Machine Learning & NLP. I also work as a <strong>QA Engineer</strong> — writing tests, catching bugs before users do, and making sure software ships reliably.<br><br>
+    <strong>10+ projects shipped.</strong> Consistency builds mastery.
+  </p>
+
+  <!-- Skills -->
+  <div class="skills-strip">
+    <span class="skill-pill">React</span>
+    <span class="skill-pill">Node.js</span>
+    <span class="skill-pill">Python</span>
+    <span class="skill-pill">MongoDB</span>
+    <span class="skill-pill">PostgreSQL</span>
+    <span class="skill-pill">NLP / ML</span>
+    <span class="skill-pill">QA Testing</span>
+    <span class="skill-pill">REST APIs</span>
+    <span class="skill-pill">Socket.io</span>
+    <span class="skill-pill">Java</span>
+  </div>
+
+  <div class="divider"><span>// find me here</span></div>
+
+  <!-- Links -->
+  <div class="links">
+
+    <a href="https://t.me/nilegt_" target="_blank" class="link-card" style="animation-delay:0.05s">
+      <div class="link-icon ic-tg">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#25D3FF"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
+      </div>
+      <div class="link-text">
+        <span class="link-label">Telegram</span>
+        <span class="link-sub">@nilegt_</span>
+      </div>
+      <span class="arrow">›</span>
+    </a>
+
+    <a href="https://www.instagram.com/nilegt_" target="_blank" class="link-card" style="animation-delay:0.1s">
+      <div class="link-icon ic-ig">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="url(#ig)">
+          <defs>
+            <linearGradient id="ig" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#FCAF45"/>
+              <stop offset="50%" stop-color="#E1306C"/>
+              <stop offset="100%" stop-color="#833AB4"/>
+            </linearGradient>
+          </defs>
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+        </svg>
+      </div>
+      <div class="link-text">
+        <span class="link-label">Instagram</span>
+        <span class="link-sub">@nilegt_</span>
+      </div>
+      <span class="arrow">›</span>
+    </a>
+
+    <a href="https://www.linkedin.com/in/naol-gonfa-61b7a9363/" target="_blank" class="link-card" style="animation-delay:0.15s">
+      <div class="link-icon ic-li">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </div>
+      <div class="link-text">
+        <span class="link-label">LinkedIn</span>
+        <span class="link-sub">Naol Gonfa — Connect with me</span>
+      </div>
+      <span class="arrow">›</span>
+    </a>
+
+    <a href="https://github.com/Naol724" target="_blank" class="link-card" style="animation-delay:0.2s">
+      <div class="link-icon ic-gh">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#E8EEFF"><path d="M12 .3C5.4.3 0 5.7 0 12.3c0 5.3 3.4 9.8 8.2 11.4.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.5-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 016 0C17 4.8 18 5.1 18 5.1c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6C20.6 22.1 24 17.6 24 12.3 24 5.7 18.6.3 12 .3z"/></svg>
+      </div>
+      <div class="link-text">
+        <span class="link-label">GitHub</span>
+        <span class="link-sub">49 repos · Full Stack & AI projects</span>
+      </div>
+      <span class="arrow">›</span>
+    </a>
+
+    <a href="https://naol.online" target="_blank" class="link-card" style="animation-delay:0.25s">
+      <div class="link-icon ic-web">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00D4FF" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+      </div>
+      <div class="link-text">
+        <span class="link-label">Portfolio Website</span>
+        <span class="link-sub">naol.online</span>
+      </div>
+      <span class="arrow">›</span>
+    </a>
+
+    <a href="https://stackoverflow.com/users/31433702/naol-gonfa" target="_blank" class="link-card" style="animation-delay:0.3s">
+      <div class="link-icon ic-so">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#F48024"><path d="M18.986 21.865v-6.404h2.134V24H1.844v-8.539h2.13v6.404h15.012zM6.111 19.731H17.78v-2.137H6.111v2.137zm.259-4.852l11.446 2.38.451-2.136-11.446-2.38-.451 2.136zm1.359-5.056l10.117 4.79.94-1.977L8.67 7.844l-.94 1.979zm2.716-4.49l8.276 7.009 1.386-1.737-8.276-7.009-1.386 1.737zM15.653 0l-1.735 1.361 6.506 8.316 1.735-1.361L15.653 0z"/></svg>
+      </div>
+      <div class="link-text">
+        <span class="link-label">Stack Overflow</span>
+        <span class="link-sub">Naol Gonfa — Ask & Answer</span>
+      </div>
+      <span class="arrow">›</span>
+    </a>
+
+    <a href="mailto:naolgonfa39@gmail.com" class="link-card" style="animation-delay:0.35s">
+      <div class="link-icon ic-mail">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7C6FFF" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+      </div>
+      <div class="link-text">
+        <span class="link-label">Email Me</span>
+        <span class="link-sub">naolgonfa39@gmail.com</span>
+      </div>
+      <span class="arrow">›</span>
+    </a>
+
+  </div>
+
+  <!-- Quote -->
+  <p class="quote">
+    <em>"Consistency builds mastery."</em><br>
+    Built with HTML · CSS · JS &nbsp;·&nbsp; © 2025 Naol Gonfa
+  </p>
+
+</div>
+</body>
+</html>
