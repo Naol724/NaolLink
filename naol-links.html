@@ -248,6 +248,10 @@
     .ic-web  { background: rgba(0,212,255,0.1);    }
     .ic-so   { background: rgba(244,128,36,0.12);  }
     .ic-mail { background: rgba(124,111,255,0.12); }
+    .ic-yt   { background: rgba(255,0,0,0.12);     }
+    .ic-wa   { background: rgba(37,211,102,0.12);  }
+    .ic-sc   { background: rgba(255,252,0,0.12);   }
+    .ic-phone { background: rgba(0,212,255,0.1);   }
 
     .link-text { flex: 1; }
     .link-label {
@@ -292,6 +296,276 @@
       animation: fadeUp 0.4s ease forwards;
     }
     @keyframes fadeUp { to { opacity:1; transform:translateY(0); } }
+
+    /* ── ENHANCED ANIMATIONS ── */
+    /* Avatar entrance and pulse */
+    .avatar {
+      animation: avatarFloat 3s ease-in-out infinite;
+    }
+    @keyframes avatarFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .avatar-wrap:hover .avatar {
+      animation: avatarBounce 0.6s ease;
+    }
+    @keyframes avatarBounce {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+    }
+
+    /* Name glow effect on hover */
+    h1 {
+      transition: text-shadow 0.3s ease;
+      cursor: default;
+    }
+    h1:hover span {
+      animation: glowText 0.6s ease;
+    }
+    @keyframes glowText {
+      0%, 100% { text-shadow: 0 0 10px rgba(0,212,255,0.5); }
+      50% { text-shadow: 0 0 20px rgba(0,212,255,0.8), 0 0 30px rgba(124,111,255,0.5); }
+    }
+
+    /* Badge animations */
+    .badge {
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .badge:hover {
+      transform: translateY(-3px);
+      border-color: var(--cyan);
+      box-shadow: 0 4px 12px rgba(0,212,255,0.2);
+      background: rgba(0,212,255,0.12);
+    }
+    .badge.purple:hover {
+      border-color: var(--purple);
+      box-shadow: 0 4px 12px rgba(124,111,255,0.2);
+      background: rgba(124,111,255,0.12);
+    }
+    .badge.green:hover {
+      border-color: #22C55E;
+      box-shadow: 0 4px 12px rgba(34,197,94,0.2);
+      background: rgba(34,197,94,0.12);
+    }
+
+    /* Bio text animation */
+    .bio {
+      transition: all 0.3s ease;
+    }
+    .bio:hover {
+      color: var(--text);
+    }
+    .bio strong {
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    .bio:hover strong {
+      color: var(--cyan);
+      text-shadow: 0 0 10px rgba(0,212,255,0.3);
+    }
+
+    /* Skill pills with stagger animation */
+    .skill-pill {
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      animation: skillSlideIn 0.5s ease forwards;
+    }
+    .skill-pill:nth-child(1) { animation-delay: 0.1s; }
+    .skill-pill:nth-child(2) { animation-delay: 0.15s; }
+    .skill-pill:nth-child(3) { animation-delay: 0.2s; }
+    .skill-pill:nth-child(4) { animation-delay: 0.25s; }
+    .skill-pill:nth-child(5) { animation-delay: 0.3s; }
+    .skill-pill:nth-child(6) { animation-delay: 0.35s; }
+    .skill-pill:nth-child(7) { animation-delay: 0.4s; }
+    .skill-pill:nth-child(8) { animation-delay: 0.45s; }
+    .skill-pill:nth-child(9) { animation-delay: 0.5s; }
+    .skill-pill:nth-child(10) { animation-delay: 0.55s; }
+    .skill-pill:nth-child(11) { animation-delay: 0.6s; }
+    .skill-pill:nth-child(12) { animation-delay: 0.65s; }
+    .skill-pill:nth-child(13) { animation-delay: 0.7s; }
+    .skill-pill:nth-child(14) { animation-delay: 0.75s; }
+
+    @keyframes skillSlideIn {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .skill-pill:hover {
+      background: rgba(0,212,255,0.15);
+      border-color: rgba(0,212,255,0.4);
+      color: var(--cyan);
+      transform: translateY(-4px) scale(1.1);
+      box-shadow: 0 8px 16px rgba(0,212,255,0.15);
+    }
+
+    /* Divider animation */
+    .divider {
+      transition: all 0.3s ease;
+    }
+    .divider:hover::before, .divider:hover::after {
+      background: var(--cyan);
+      box-shadow: 0 0 10px rgba(0,212,255,0.5);
+    }
+    .divider:hover span {
+      color: var(--cyan);
+      letter-spacing: 0.15em;
+    }
+
+    /* Link card enhanced animations */
+    .link-card {
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.4s ease forwards;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .link-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0,212,255,0.1), transparent);
+      transition: left 0.6s ease;
+      pointer-events: none;
+    }
+
+    .link-card:hover::after {
+      left: 100%;
+    }
+
+    .link-card:hover {
+      border-color: rgba(0,212,255,0.6);
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 12px 32px rgba(0,212,255,0.2), inset 0 1px 0 rgba(0,212,255,0.2);
+      background: linear-gradient(135deg, var(--card) 0%, rgba(0,212,255,0.03) 100%);
+    }
+
+    .link-icon {
+      transition: all 0.3s ease;
+    }
+
+    .link-card:hover .link-icon {
+      transform: scale(1.15) rotate(5deg);
+      box-shadow: 0 0 16px rgba(0,212,255,0.3);
+    }
+
+    .link-label {
+      transition: all 0.3s ease;
+    }
+
+    .link-card:hover .link-label {
+      color: var(--cyan);
+      letter-spacing: 0.02em;
+    }
+
+    .link-sub {
+      transition: all 0.3s ease;
+    }
+
+    .link-card:hover .link-sub {
+      color: var(--cyan);
+    }
+
+    .arrow {
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .link-card:hover .arrow {
+      color: var(--cyan);
+      transform: translateX(6px) scale(1.3);
+    }
+
+    /* Quote animation */
+    .quote {
+      animation: fadeInQuote 0.8s ease 0.5s both;
+    }
+
+    @keyframes fadeInQuote {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .quote:hover {
+      color: var(--cyan);
+      text-shadow: 0 0 10px rgba(0,212,255,0.2);
+    }
+
+    /* Local name animation */
+    [style*="Local name"] {
+      animation: slideInName 0.6s ease 0.2s both;
+    }
+
+    @keyframes slideInName {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* Status dot enhanced pulse */
+    .status-dot {
+      animation: enhancedPulse 2.5s ease-in-out infinite;
+    }
+    @keyframes enhancedPulse {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(34,197,94,0.7);
+        transform: scale(1);
+      }
+      50% {
+        box-shadow: 0 0 0 8px rgba(34,197,94,0);
+        transform: scale(1.1);
+      }
+    }
+
+    .avatar-wrap:hover .status-dot {
+      animation: activePulse 0.8s ease infinite;
+    }
+
+    @keyframes activePulse {
+      0%, 100% { 
+        box-shadow: 0 0 0 0 rgba(34,197,94,0.8), 0 0 10px rgba(34,197,94,0.6);
+      }
+      50% {
+        box-shadow: 0 0 0 6px rgba(34,197,94,0), 0 0 20px rgba(34,197,94,0.8);
+      }
+    }
+
+    /* Container stagger effect */
+    @keyframes containerFade {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .container {
+      animation: containerFade 0.6s ease;
+    }
   </style>
 </head>
 <body>
@@ -305,18 +579,21 @@
 
   <!-- Name -->
   <h1>Naol <span>Gonfa</span></h1>
+  <p style="text-align: center; color: var(--muted); font-size: 0.85rem; margin-bottom: 0.8rem; font-family: 'JetBrains Mono', monospace;">Local name: <strong style="color: var(--cyan);">nilegt</strong></p>
 
   <!-- Badges -->
   <div class="title-row">
     <span class="badge">Full Stack Developer</span>
-    <span class="badge purple">AI Systems Builder</span>
+    <span class="badge purple">QA Engineer</span>
     <span class="badge green">Open to Work</span>
   </div>
 
   <!-- Bio -->
   <p class="bio">
-    CS Student from <strong>Ethiopia 🇪🇹</strong> building real-world systems that think.<br><br>
-    I engineer <strong>full-stack web platforms</strong> (MERN, REST APIs) and <strong>AI-powered applications</strong> using Machine Learning & NLP. I also work as a <strong>QA Engineer</strong> — writing tests, catching bugs before users do, and making sure software ships reliably.<br><br>
+    3rd Year <strong>Computer Science Student</strong> at <strong>Haramaya University</strong>, Ethiopia 🇪🇹<br><br>
+    <strong>Full Stack Developer</strong> & <strong>QA Engineer</strong> building scalable web applications and reliable software systems.<br><br>
+    Specialized in production-level development with modern JavaScript & Python ecosystems. Experienced in third-party API integrations (Stripe, Firebase) and Agile team collaboration with up to 11 developers. Actively seeking remote internship or junior developer opportunities.<br><br>
+    <strong>Join my Telegram channel</strong> for tech insights, career tips, and learning resources. 📢<br><br>
     <strong>10+ projects shipped.</strong> Consistency builds mastery.
   </p>
 
@@ -325,13 +602,17 @@
     <span class="skill-pill">React</span>
     <span class="skill-pill">Node.js</span>
     <span class="skill-pill">Python</span>
-    <span class="skill-pill">MongoDB</span>
+    <span class="skill-pill">Express.js</span>
     <span class="skill-pill">PostgreSQL</span>
-    <span class="skill-pill">NLP / ML</span>
-    <span class="skill-pill">QA Testing</span>
+    <span class="skill-pill">MongoDB</span>
+    <span class="skill-pill">Firebase</span>
+    <span class="skill-pill">Cypress</span>
+    <span class="skill-pill">Postman</span>
+    <span class="skill-pill">Git & GitHub</span>
     <span class="skill-pill">REST APIs</span>
-    <span class="skill-pill">Socket.io</span>
-    <span class="skill-pill">Java</span>
+    <span class="skill-pill">QA Testing</span>
+    <span class="skill-pill">Tailwind CSS</span>
+    <span class="skill-pill">Flask</span>
   </div>
 
   <div class="divider"><span>// find me here</span></div>
@@ -339,13 +620,24 @@
   <!-- Links -->
   <div class="links">
 
-    <a href="https://t.me/nilegt_" target="_blank" class="link-card" style="animation-delay:0.05s">
+    <a href="https://t.me/nilegt" target="_blank" class="link-card" style="animation-delay:0.05s">
       <div class="link-icon ic-tg">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="#25D3FF"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
       </div>
       <div class="link-text">
         <span class="link-label">Telegram</span>
-        <span class="link-sub">@nilegt_</span>
+        <span class="link-sub">@nilegt</span>
+      </div>
+      <span class="arrow">›</span>
+    </a>
+
+    <a href="https://t.me/+channel_link" target="_blank" class="link-card" style="animation-delay:0.08s">
+      <div class="link-icon ic-tg">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#25D3FF"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
+      </div>
+      <div class="link-text">
+        <span class="link-label">Telegram Channel</span>
+        <span class="link-sub">Tech, Science, Learning & Career</span>
       </div>
       <span class="arrow">›</span>
     </a>
@@ -414,7 +706,51 @@
       <span class="arrow">›</span>
     </a>
 
-    <a href="mailto:naolgonfa39@gmail.com" class="link-card" style="animation-delay:0.35s">
+    <a href="https://www.youtube.com/@Ethio-man-d9u" target="_blank" class="link-card" style="animation-delay:0.28s">
+      <div class="link-icon ic-yt">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#FF0000"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      </div>
+      <div class="link-text">
+        <span class="link-label">YouTube</span>
+        <span class="link-sub">@Ethio-man-d9u</span>
+      </div>
+      <span class="arrow">›</span>
+    </a>
+
+    <a href="https://wa.me/qr/772JB525K5ZJE1" target="_blank" class="link-card" style="animation-delay:0.31s">
+      <div class="link-icon ic-wa">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#25D366"><path d="M12 0C5.373 0 0 5.373 0 12c0 2.251.646 4.355 1.757 6.133L.318 24l6.269-1.947C8.747 23.362 10.308 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.455 0-2.862-.344-4.123-1.02l-.296-.158-3.071.953.97-3.054-.19-.304A10 10 0 112 12c0 5.515 4.486 10 10 10z"/><path d="M17.415 14.382c-.315-.158-.894-.443-1.03-.49-.137-.047-.237-.047-.337.047-.1.094-.386.486-.472.584-.087.099-.174.112-.489.035-.314-.076-1.276-.467-2.43-1.482-.898-.777-1.501-1.738-1.677-2.052-.176-.315-.018-.485.132-.642.135-.134.298-.35.447-.525.15-.175.199-.298.299-.497.1-.198.05-.373-.025-.523-.074-.15-.337-.803-.462-1.1-.122-.299-.245-.259-.337-.264-.087-.004-.187-.004-.287-.004-.1 0-.263.037-.4.186-.137.149-.524.51-.524 1.243s.537 1.441.611 1.54c.074.099 1.043 1.589 2.523 2.227.352.15.626.239.84.307.353.113.674.098.93-.06.276-.18.565-.498.72-.968.155-.47.155-.87.111-.955-.045-.085-.154-.135-.322-.184z"/></svg>
+      </div>
+      <div class="link-text">
+        <span class="link-label">WhatsApp</span>
+        <span class="link-sub">Message me directly</span>
+      </div>
+      <span class="arrow">›</span>
+    </a>
+
+    <a href="https://www.snapchat.com/add/nilegt?share_id=5DflIZ9EjJw&locale=en-GB" target="_blank" class="link-card" style="animation-delay:0.34s">
+      <div class="link-icon ic-sc">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#FFFC00"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.15 11.5c.265 0 .48.214.48.478 0 .264-.215.478-.48.478-.264 0-.48-.214-.48-.478 0-.264.216-.478.48-.478zM6.85 11.5c.265 0 .48.214.48.478 0 .264-.215.478-.48.478-.264 0-.48-.214-.48-.478 0-.264.216-.478.48-.478zm3.71 6.11c-1.006 1.185-2.475 1.885-4.095 1.885-.503 0-.908-.408-.908-.91 0-.483.386-.88.86-.906.152 0 .305-.01.456-.027.456-.045.89-.16 1.284-.35.363-.175.703-.41 1.01-.695.263-.243.48-.526.648-.835.084-.155.157-.316.22-.48.132.143.32.26.54.26.26 0 .477-.182.537-.427.028-.113.045-.228.052-.344.035-.525.232-1.015.57-1.41.34-.398.8-.7 1.32-.865.232-.07.468-.102.707-.102.24 0 .475.032.707.102.52.165.98.467 1.32.865.337.395.535.885.569 1.41.008.116.024.231.052.344.06.245.277.427.538.427.22 0 .408-.117.54-.26.063.164.136.325.22.48.168.31.385.592.648.835.307.285.648.52 1.01.695.394.19.828.305 1.284.35.151.017.304.027.456.027.473.026.86.423.86.906 0 .502-.405.91-.908.91-1.62 0-3.09-.7-4.095-1.885z"/></svg>
+      </div>
+      <div class="link-text">
+        <span class="link-label">Snapchat</span>
+        <span class="link-sub">@nilegt</span>
+      </div>
+      <span class="arrow">›</span>
+    </a>
+
+    <a href="tel:+251913678845" class="link-card" style="animation-delay:0.37s">
+      <div class="link-icon ic-phone">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00D4FF" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </div>
+      <div class="link-text">
+        <span class="link-label">Call Me</span>
+        <span class="link-sub">+251 913 678 845</span>
+      </div>
+      <span class="arrow">›</span>
+    </a>
+
+    <a href="mailto:naolgonfa39@gmail.com" class="link-card" style="animation-delay:0.4s">
       <div class="link-icon ic-mail">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7C6FFF" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
       </div>
