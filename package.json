@@ -4,7 +4,9 @@
   "description": "Professional links portfolio for Naol Gonfa - Full Stack Developer & QA Engineer",
   "main": "naol-links.html",
   "scripts": {
-    "start": "npx http-server"
+    "start": "node server.js",
+    "dev": "npx http-server",
+    "server": "node server.js"
   },
   "keywords": [
     "portfolio",
@@ -17,5 +19,8 @@
   "license": "MIT",
   "engines": {
     "node": "18.x"
-  }
+  },
+  "dependencies": {}
 }
+
+
