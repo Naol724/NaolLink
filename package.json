@@ -1,0 +1,21 @@
+{
+  "name": "naol-links-portfolio",
+  "version": "1.0.0",
+  "description": "Professional links portfolio for Naol Gonfa - Full Stack Developer & QA Engineer",
+  "main": "naol-links.html",
+  "scripts": {
+    "start": "npx http-server"
+  },
+  "keywords": [
+    "portfolio",
+    "links",
+    "profile",
+    "fullstack",
+    "developer"
+  ],
+  "author": "Naol Gonfa",
+  "license": "MIT",
+  "engines": {
+    "node": "18.x"
+  }
+}
